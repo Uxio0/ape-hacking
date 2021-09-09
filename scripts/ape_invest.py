@@ -1,4 +1,6 @@
 from binascii import Error
+
+from brownie import Contract
 from eth_account import Account
 from ape_safe import ApeSafe
 from os import environ
@@ -23,6 +25,8 @@ def main():
 
     safe = ApeSafe(safe_address)
 
+    dai = Contract.from_explorer('0x6B175474E89094C44Da98b954EedeAC495271d0F')
+    vault = Contract.from_explorer('0x19D3364A399d251E894aC732651be8B0E4e85001')
     dai = safe.contract('0x6B175474E89094C44Da98b954EedeAC495271d0F')
     vault = safe.contract('0x19D3364A399d251E894aC732651be8B0E4e85001')
 
@@ -32,6 +36,7 @@ def main():
 
     safe_tx = safe.multisend_from_receipts()
     safe.preview(safe_tx)
+    print(safe.estimate_gas(safe_tx))
 
     if owner_accounts:
         for account in owner_accounts:

@@ -7,7 +7,7 @@ jobs:
     # runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8, 3.9]
+        python-version: [3.8]
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
@@ -34,3 +34,4 @@ jobs:
         brownie run ape_invest --network mainnet-fork
       env:
         WEB3_INFURA_PROJECT_ID: ${{ secrets.WEB3_INFURA_PROJECT_ID }}
+        ETHERSCAN_TOKEN: ${{ secrets.ETHERSCAN_TOKEN }}
