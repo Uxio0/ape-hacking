@@ -24,6 +24,13 @@ jobs:
         key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
         restore-keys: |
           ${{ runner.os }}-pip-
+    - name: Cache Solidity Installations
+      uses: actions/cache@v2
+      with:
+        path: |
+          ~/.solcx
+          ~/.vvm
+        key: ${{ runner.os }}-compiler-cache
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
