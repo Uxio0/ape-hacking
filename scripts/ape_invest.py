@@ -36,7 +36,7 @@ def main():
 
     safe_tx = safe.multisend_from_receipts()
     safe.preview(safe_tx)
-    print(safe.estimate_gas(safe_tx))
+    print('Estimated Gas', safe.estimate_gas(safe_tx))
 
     if owner_accounts:
         for account in owner_accounts:
