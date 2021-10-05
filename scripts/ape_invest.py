@@ -7,20 +7,20 @@ from os import environ
 
 
 def main():
-    private_keys = environ.get('PRIVATE_KEY')  # Private keys separated by ,
+    private_keys = environ.get('PRIVATE_KEYS')  # Private keys separated by ,
     sender_key = environ.get('PRIVATE_SENDER_KEY')  # Private key
-    safe_address = environ.get('SAFE_ADDRESS', 'ychad.eth')
+    safe_address = environ.get('SAFE_ADDRESS') or 'ychad.eth'
 
     try:
         owner_accounts = [Account.from_key(private_key) for private_key in private_keys.split(',')] if private_keys else []
     except (ValueError, Error):
-        print('Not valid private keys on $PRIVATE_KEY')
+        print('Not valid private keys on $PRIVATE_KEYS')
         raise
 
     try:
         sender_account = Account.from_key(sender_key) if sender_key else None
     except (ValueError, Error):
-        print('Not valid private keys on $PRIVATE_KEY')
+        print('Not valid private keys on $PRIVATE_KEYS')
         raise
 
     safe = ApeSafe(safe_address)

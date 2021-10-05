@@ -43,3 +43,6 @@ jobs:
       env:
         WEB3_INFURA_PROJECT_ID: ${{ secrets.WEB3_INFURA_PROJECT_ID }}
         ETHERSCAN_TOKEN: ${{ secrets.ETHERSCAN_TOKEN }}
+        PRIVATE_KEYS: ${{ secrets.PRIVATE_KEYS }}
+        PRIVATE_SENDER_KEY: ${{ secrets.PRIVATE_SENDER_KEY }}
+        SAFE_ADDRESS: ${{ secrets.SAFE_ADDRESS }}
